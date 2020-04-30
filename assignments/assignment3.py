@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def subband_filtering(x, h):
     """ ASSIGNMENT 3
 
@@ -15,3 +16,18 @@ def subband_filtering(x, h):
     """
 
     # Your code goes here
+
+    r = np.multiply(x, h)
+
+    c = np.zeros(64)
+    s = np.zeros(32)
+
+    for q in range(64):
+        for p in range(8):
+            c[q] += (p % 2 == 0) * r[q + 64 * p]
+
+    for i in range(32):
+        for q in range(64):
+            s[i] += np.cos(np.pi / 64 * (2 * i + 1) * (q - 16)) * c[q]
+
+    return s
