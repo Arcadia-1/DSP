@@ -1,13 +1,29 @@
 import numpy as np
+import matplotlib.pyplot as plt
+from scipy import signal
 
-N = 512
-n = np.arange(N)
-w = 1 - np.cos(2 * np.pi * n / (N - 1))
+def plot_response(fs, w, h, title):
+    "Utility function to plot response functions"
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(0.5 * fs * w / np.pi, 20 * np.log10(np.abs(h)))
+    # ax.set_ylim(-40, 5)
+    # ax.set_xlim(0, 0.5 * fs)
+    ax.grid(True)
+    ax.set_xlabel("Frequency (Hz)")
+    ax.set_ylabel("Gain (dB)")
+    ax.set_title(title)
+    plt.show()
 
-target=511
-result = np.dot(w,w)
-print(np.sum(result))
+fs = 44100
+numtaps = 512
+f_pass = fs / 2 * 1 / 128
+f_stop = fs / 2 * 1 / 32
 
-c=np.sqrt(target/np.sum(w**2))
-w=c*w
-print(np.sum(w**2))
+bands = [0, f_pass, f_stop, 0.5 * fs]
+desired = [2, 0]
+out = signal.remez(numtaps, bands, desired, fs=fs)
+
+w, h = signal.freqz(out, [1], worN=2000)
+plot_response(fs, w, h, "Low-pass Filter")
+
