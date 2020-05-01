@@ -171,12 +171,11 @@ def check_assignment3():
 
 
 def check_assignment4():
-
     n_tests = 4
 
     from parameters import EncoderParameters
     params = EncoderParameters(44100, 2, 64)
-
+    
     for i in range(1,n_tests+1):
         fin_name = 'data/a4_testInput' + str(i) + '.txt'
         fout_name = 'data/a4_testOutput' + str(i) + '.txt'
@@ -206,26 +205,26 @@ def check_assignment4():
 if __name__ == "__main__":
 
     # check all assignments
-    print('*** Check assignment 1 : Scaled FFT in dB ***')
-    try:
-        check_assignment1()
-    except:
-        print('Exception occured while checking assignment 1.')
-    print('*** Done. ***\n')
+    # print('*** Check assignment 1 : Scaled FFT in dB ***')
+    # try:
+    #     check_assignment1()
+    # except:
+    #     print('Exception occured while checking assignment 1.')
+    # print('*** Done. ***\n')
 
-    print('*** Check assignment 2 : Prototype filter design ***')
-    try:
-        check_assignment2()
-    except:
-        print('Exception occured while checking assignment 2.')
-    print('*** Done. ***\n')
+    # print('*** Check assignment 2 : Prototype filter design ***')
+    # try:
+    #     check_assignment2()
+    # except:
+    #     print('Exception occured while checking assignment 2.')
+    # print('*** Done. ***\n')
 
-    print('*** Check assignment 3 : Subband filtering ***')
-    try:
-        check_assignment3()
-    except:
-        print('Exception occured while checking assignment 3.')
-    print('*** Done. ***\n')
+    # print('*** Check assignment 3 : Subband filtering ***')
+    # try:
+    #     check_assignment3()
+    # except:
+    #     print('Exception occured while checking assignment 3.')
+    # print('*** Done. ***\n')
 
     print('*** Check assignment 4 : Quantization ***')
     try:

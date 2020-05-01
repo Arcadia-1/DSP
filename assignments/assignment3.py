@@ -24,7 +24,7 @@ def subband_filtering(x, h):
 
     for q in range(64):
         for p in range(8):
-            c[q] += (p % 2 == 0) * r[q + 64 * p]
+            c[q] += (-1) ** p * r[q + 64 * p]
 
     for i in range(32):
         for q in range(64):

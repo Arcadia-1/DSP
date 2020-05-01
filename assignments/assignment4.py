@@ -1,6 +1,7 @@
 
 import numpy as np
 
+
 def quantization(sample, sf, ba, QCa, QCb):
     """ ASSIGNMENT 4
 
@@ -16,3 +17,6 @@ def quantization(sample, sf, ba, QCa, QCb):
     """
 
     # Your code goes here
+    q = np.floor((QCa * sample / sf + QCb) * 2**(ba - 1))
+    return q
+    
